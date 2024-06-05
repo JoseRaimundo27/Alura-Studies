@@ -1,0 +1,1 @@
+export type buttonProps = "submit" | "reset" | "button" | undefined
