@@ -1,30 +1,30 @@
-const express = require('express');
-const cors = require('cors');
+const { Router } = require('express');
 
-require('dotenv').config();
-
-const routes = require('./routes');
+const routes = Router();   
 
 
-const app = express();
+routes.post('/users', (req, res) => {}); 
+routes.get('/users', (req, res) => {});
+routes.get('/users/user_id', (req, res) => {});
+
+routes.post('/login', (req, res) => {});    
 
 
-const AuthRegisterUserRoutes = require('./routes/AuthRegisterUserRoutes');
+routes.post('/products/:user_id', (req, res) => {});
+routes.get('/products/:user_id', (req, res) => {}); 
+routes.patch('/products/:user_id/:product_id', (req, res) => {});
+routes.delete('/products/:user_id/:product_id', (req, res) => {});
+routes.post('/products/:user_id/:product_id', (req, res) => {});
 
-const AuthRegisterUserController = require('./controllers/AuthRegisterUserController');
+routes.get('/products', (req, res) => {});
+routes.get ('/products/:product_id', (req, res) => {});  
+routes.patch('/products/:product_id', (req, res) => {});
+
+routes.post('/cart/:user_id', (req, res) => {}); 
+routes.get('/cart/:user_id', (req, res) => {});
+routes.get('/cart/:cart_id/:user_id', (req, res) => {});
 
 
 
 
-app.use('/', AuthRegisterUserRoutes);
-app.use(express.json());
-app.use(cors());   
-app.use(routes); 
-
-const port = process.env.PORT || 3030;
-
-app.listen(3030, () => {
-    console.log('api running on port 3030'); 
-});
-
-require ("./database/connection")
+module.exports = routes
